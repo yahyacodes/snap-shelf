@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* app/global.css */
+
+/* Prism.js default theme */
+code.language-javascript {
+  color: #f8f8f2;
+  background-color: #2d2d2d; /* Same as bg-gray-900 */
+}
+
+/* Add specific token styles as needed */
+.token.comment {
+  color: #7d8c8d;
+}
+.token.string {
+  color: #d69d85;
+}
+/* Add more token styles as needed */
+
+/* Custom styles for the code block */
+.code-block {
+  padding: 1em;
+  margin: 0;
+  overflow: auto;
+  border-radius: 0.3em;
+  background: #2d2d2d; /* Same as bg-gray-900 */
+  border: 1px solid #3c3c3c; /* Same as border-gray-700 */
+  color: #f8f8f2; /* Same as text-gray-100 */
+}
+
+.code-block code {
+  font-size: 1em;
+  background: none;
+}
