@@ -9,37 +9,29 @@ const Hero = () => {
           <div className="container mx-auto px-4 md:px-6 flex items-center justify-center">
             <div className="flex flex-col items-center space-y-8 text-center max-w-3xl">
               <div className="space-y-4">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                  <span className="block mb-2">Share Code Snippets,</span>
-                  <span className="block">Boost Productivity</span>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none max-w-[900px]">
+                  Share and Discover
+                  <br />
+                  Code Snippets with Ease
                 </h1>
-                <p className="mx-auto max-w-lg text-gray-300 md:text-xl text-center">
+                <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Discover, and share code snippets from developers worldwide.
                   Streamline your coding process and learn from the community.
                 </p>
               </div>
-              <div className="w-full max-w-sm space-y-4">
-                <form className="flex space-x-2">
-                  <input
-                    className="flex-1 input input-bordered"
-                    placeholder="Search for snippets..."
-                    type="search"
-                  />
-                  <button type="submit" className="btn btn-warning">
-                    <Search className="h-4 w-4" />
-                    <span className="sr-only">Search</span>
-                  </button>
-                </form>
-              </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="btn btn-warning">
-                  Share a Snippet
-                  <Share2 className="ml-2 h-4 w-4" />
-                </button>
-                <button variant="outline" className="btn btn-bordered">
-                  <Link href={"/explore"}>Explore Snippets</Link>
-                  <Code className="ml-2 h-4 w-4" />
-                </button>
+                <Link href={"/login"}>
+                  <button className="btn btn-warning">
+                    Share a Snippet
+                    <Share2 className="ml-2 h-4 w-4" />
+                  </button>
+                </Link>
+                <Link href={"/explore"}>
+                  <button variant="outline" className="btn btn-bordered">
+                    Explore Snippets
+                    <Code className="ml-2 h-4 w-4" />
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

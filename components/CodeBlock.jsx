@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, Clipboard } from "lucide-react";
 
-const CodeBlock = ({ code, language = "javascript" }) => {
+const CodeBlock = ({ code }) => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {

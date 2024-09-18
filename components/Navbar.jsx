@@ -21,10 +21,10 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href={"/create-snippet"}
+              href={"/login"}
               className="text-white cursor-pointer hover:text-warning mx-6"
             >
-              Create
+              Create a snippet
             </Link>
           </div>
           <div>

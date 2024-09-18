@@ -1,4 +1,3 @@
-import Breadcrumbs from "@/components/BreadCrumbs";
 import CodeBlock from "@/components/CodeBlock";
 
 // create a function to get the snippets
@@ -30,9 +29,11 @@ const SnippetList = async () => {
         {snippets.length > 0 ? (
           snippets.map((snippet) => (
             <div key={snippet._id} className="p-4 rounded">
-              <h3 className="text-2xl font-semibold">{snippet.title}</h3>
+              <h3 className="text-2xl font-semibold text-white">
+                {snippet.title}
+              </h3>
               <p>{snippet.description}</p>
-              <CodeBlock code={snippet.code} />
+              <CodeBlock code={snippet.code} language="javascript" />
               <p className="text-sm text-gray-400">
                 Tags: {snippet.tags.join(", ")}
               </p>
