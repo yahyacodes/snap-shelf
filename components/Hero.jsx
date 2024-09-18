@@ -20,7 +20,7 @@ const Hero = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href={"/login"}>
+                <Link href={"/create-snippet"}>
                   <button className="btn btn-warning">
                     Share a Snippet
                     <Share2 className="ml-2 h-4 w-4" />

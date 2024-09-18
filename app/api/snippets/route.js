@@ -1,5 +1,5 @@
-import connectMongoDB from "@/lib/mongodb";
-import Snippet from "@/models/snippets";
+import connectMongoDB from "../../../lib/mongodb";
+import Snippet from "../../../models/snippets";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {

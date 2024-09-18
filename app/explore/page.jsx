@@ -1,4 +1,4 @@
-import CodeBlock from "@/components/CodeBlock";
+import CodeBlock from "../../components/CodeBlock";
 
 // create a function to get the snippets
 const getSnippets = async () => {
