@@ -54,61 +54,61 @@ export default function SnippetForm() {
 
   return (
     <NextAuthProvider>
-    <div className="container mx-auto p-36 min-h-screen">
-      <div className="flex justify-center text-center">
-        <h1 className="text-4xl mb-4 font-bold">Create Snippet</h1>
+      <div className="container mx-auto p-36 min-h-screen">
+        <div className="flex justify-center text-center">
+          <h1 className="text-4xl mb-4 font-bold">Create Snippet</h1>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Form fields remain the same */}
+          <div>
+            <label className="block">Title</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+              className="input input-bordered w-full"
+            />
+          </div>
+
+          <div>
+            <label className="block">Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="textarea textarea-bordered w-full"
+            />
+          </div>
+
+          <div>
+            <label className="block">Code</label>
+            <CodeMirror
+              value={formData.code}
+              height="600px"
+              theme={dracula}
+              extensions={[javascript()]}
+              onChange={handleCodeChange}
+            />
+          </div>
+
+          <div>
+            <label className="block">Tags (comma-separated)</label>
+            <input
+              type="text"
+              name="tags"
+              value={formData.tags}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+            />
+          </div>
+
+          <button type="submit" className="btn btn-warning">
+            Submit
+          </button>
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Form fields remain the same */}
-        <div>
-          <label className="block">Title</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-            className="input input-bordered w-full"
-          />
-        </div>
-
-        <div>
-          <label className="block">Description</label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="textarea textarea-bordered w-full"
-          />
-        </div>
-
-        <div>
-          <label className="block">Code</label>
-          <CodeMirror
-            value={formData.code}
-            height="600px"
-            theme={dracula}
-            extensions={[javascript()]}
-            onChange={handleCodeChange}
-          />
-        </div>
-
-        <div>
-          <label className="block">Tags (comma-separated)</label>
-          <input
-            type="text"
-            name="tags"
-            value={formData.tags}
-            onChange={handleChange}
-            className="input input-bordered w-full"
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
     </NextAuthProvider>
   );
 }
