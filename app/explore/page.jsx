@@ -10,15 +10,16 @@ const getSnippets = async () => {
     if (!response.ok) {
       throw new Error("Failed to fetch snippets");
     }
-    return response.json();
+    const data = await response.json();
+    return { snippets: data }; // Ensure this is the correct structure
   } catch (error) {
     console.error("Error fetching snippets", error);
-    return []; // return an empty array on error
+    return { snippets: [] }; // Return an object with an empty array
   }
 };
 
 const SnippetList = async () => {
-  const { snippets } = await getSnippets();
+  const { snippets } = await getSnippets(); // Destructure properly
 
   return (
     <div className="container mx-auto min-h-screen">
@@ -26,7 +27,7 @@ const SnippetList = async () => {
         <h1 className="text-4xl mb-4 font-bold">Recent Snippets</h1>
       </div>
       <div className="space-y-4">
-        {snippets.length > 0 ? (
+        {Array.isArray(snippets) && snippets.length > 0 ? ( // Ensure `snippets` is an array
           snippets.map((snippet) => (
             <div key={snippet._id} className="p-4 rounded">
               <h3 className="text-2xl font-semibold text-white">
