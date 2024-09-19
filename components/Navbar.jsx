@@ -1,7 +1,20 @@
+"use client";
+
 import { Github, SquareDashedBottomCode } from "lucide-react";
 import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const { status } = useSession();
+
+  const handleSignOut = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
+  const handleSignIn = () => {
+    signIn("google", { callbackUrl: "/create-snippet" });
+  };
+
   return (
     <div className="container mx-auto navbar">
       <div className="flex-1">
@@ -12,7 +25,7 @@ const Navbar = () => {
       </div>
       <div className="flex-none hidden md:block">
         <div className="menu menu-horizontal px-1">
-          <div className="mr-6 mt-1 font-medium text-lg hover:text-warning cursor-pointer">
+          <div className="mr-6 mt-2 font-medium text-lg hover:text-warning cursor-pointer">
             <Link
               href={"/explore"}
               className="text-white cursor-pointer hover:text-warning"
@@ -21,20 +34,28 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href={"/create-snippet"}
+              href={"/login"}
               className="text-white cursor-pointer hover:text-warning mx-6"
             >
               Create a snippet
             </Link>
           </div>
           <div>
-            <Link
-              href="https://github.com/yahyacodes"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github className="text-white cursor-pointer hover:text-warning mt-1" />
-            </Link>
+            {status === "authenticated" ? (
+              <button
+                className="btn btn-warning py-1 px-6"
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </button>
+            ) : (
+              <button
+                className="btn btn-warning py-1 px-6"
+                onClick={handleSignIn}
+              >
+                Sign In
+              </button>
+            )}
           </div>
         </div>
       </div>

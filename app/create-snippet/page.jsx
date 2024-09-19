@@ -4,6 +4,7 @@ import { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { dracula } from "@uiw/codemirror-themes";
 import { javascript } from "@codemirror/lang-javascript";
+import { NextAuthProvider } from "../Providers";
 
 export default function SnippetForm() {
   const [formData, setFormData] = useState({
@@ -52,6 +53,7 @@ export default function SnippetForm() {
   };
 
   return (
+    <NextAuthProvider>
     <div className="container mx-auto p-36 min-h-screen">
       <div className="flex justify-center text-center">
         <h1 className="text-4xl mb-4 font-bold">Create Snippet</h1>
@@ -107,5 +109,6 @@ export default function SnippetForm() {
         </button>
       </form>
     </div>
+    </NextAuthProvider>
   );
 }
