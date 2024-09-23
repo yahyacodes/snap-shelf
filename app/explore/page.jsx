@@ -2,7 +2,7 @@ import React from "react";
 import CodeBlock from "../../components/CodeBlock";
 const getSnippets = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/snippets", {
+    const res = await fetch("/api/snippets", {
       cache: "no-store",
     });
 
@@ -10,14 +10,17 @@ const getSnippets = async () => {
       throw new Error("Failed to fetch snippets");
     }
 
-    return res.json();
+    const data = await res.json();
+    return { snippets: data.snippets }; // Ensure you return an object with `snippets`
   } catch (error) {
     console.log("Error loading Snippets", error);
+    return { snippets: [] }; // Return an empty array in case of an error
   }
 };
 
 const SnippetsList = async () => {
   const { snippets } = await getSnippets();
+  console.log(snippets);
 
   return (
     <div className="container mx-auto min-h-screen">
