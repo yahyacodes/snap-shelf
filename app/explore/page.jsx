@@ -1,25 +1,23 @@
+import React from "react";
 import CodeBlock from "../../components/CodeBlock";
-
-// create a function to get the snippets
 const getSnippets = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/snippets", {
+    const res = await fetch("http://localhost:3000/api/snippets", {
       cache: "no-store",
     });
 
-    if (!response.ok) {
+    if (!res.ok) {
       throw new Error("Failed to fetch snippets");
     }
-    const data = await response.json();
-    return { snippets: data }; // Ensure this is the correct structure
+
+    return res.json();
   } catch (error) {
-    console.error("Error fetching snippets", error);
-    return { snippets: [] }; // Return an object with an empty array
+    console.log("Error loading Snippets", error);
   }
 };
 
-const SnippetList = async () => {
-  const { snippets } = await getSnippets(); // Destructure properly
+const SnippetsList = async () => {
+  const { snippets } = await getSnippets();
 
   return (
     <div className="container mx-auto min-h-screen">
@@ -27,25 +25,21 @@ const SnippetList = async () => {
         <h1 className="text-4xl mb-4 font-bold">Recent Snippets</h1>
       </div>
       <div className="space-y-4">
-        {Array.isArray(snippets) && snippets.length > 0 ? ( // Ensure `snippets` is an array
-          snippets.map((snippet) => (
-            <div key={snippet._id} className="p-4 rounded">
-              <h3 className="text-2xl font-semibold text-white">
-                {snippet.title}
-              </h3>
-              <p>{snippet.description}</p>
-              <CodeBlock code={snippet.code} language="javascript" />
+        {snippets.map((snippet, idx) => (
+          <div key={idx} className="p-4">
+            <div>
+              <h2 className="font-bold text-2xl">{snippet.title}</h2>
+              <div>{snippet.description}</div>
+              <CodeBlock code={snippet.code} />
               <p className="text-sm text-gray-400">
                 Tags: {snippet.tags.join(", ")}
               </p>
             </div>
-          ))
-        ) : (
-          <p>No snippets found</p>
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default SnippetList;
+export default SnippetsList;
